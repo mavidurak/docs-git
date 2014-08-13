@@ -96,9 +96,31 @@ Pull / Push kavramları farkları ve kullanım yerleri
 ---------------------------------------------------
 ----------
 
+Şu ana kadar hep kendi bilgisayarımızda çalıştık, dosya düzenledik, ekledik, sildik oyunlar oynadık. Yani hep localdeydik. Peki ama bu git repomuzu uzaktaki bir sunucuya yedekleyemez miyiz? Bu GitHub, BitBucket nedir? İn midir cin midir biraz onlardan bahsedelim. Bunun için remote repo kavramından bahsedeyim, en basit tanımıyla localinizdeki reponuzun uzak bir sunucudaki kopyasıdır. Başka insanların reponuzu görebilmesi, kodlarınızı (siz isterseniz) görebilmesi ve indirebilmesi için bu kodları bir sunucuya koymak gerekir. Bu amaçla kendiniz bir sunucu kiralayıp, o sunucuya da bir **git** kuabilirsiniz, ya da bunlarla hiç uğraşmayıp GitHub ya da BitBucket kullanabilirsiniz. Bu 2 servis de tam olarak yukarıda anlattığım işi yapıyorlar. 
+
+Hemen github.com adresine girip üye olup **new repository** diyerek yeni bir repository oluşturalım.
+
+![enter image description here][8]
+
+Şimdi local repomuza "Artık bu reponun remote adresi şudur, commitlerimi o adrese **de** gönder" diyebilmemiz için localimzdeki repoya github repo adresimizi ekliyoruz.
+
+git remote add origin https://github.com/erayalakese/Hesap-Mak.git
+
+Bu komut ile remote repomuzu da local repomuza tanıttıktan sonra localimizdeki tüm commitlerimizi remote'a göndermeliyiz. Bu işleme **push** adı veriliyor, yani localimizdeki commitleri remote'a *itiyoruz* .
+
+    git push origin master
+
+![enter image description here][9]
+
+Artık tüm commitlerinizi GitHub'da da görebilirsiniz. Ancak localinizde yaptığınız tüm commitler remote'a otomatik olarak push **edilmiyor** . Bu yüzden commit ettikten sonra git push komutunu tekrar çalıştırmalısınız. Her commit sonrası push etmenize gerek yok, commitlerinizi localinizde biriktirip gün sonunda toplu olarak push edebilirsiniz.
+
+`pull` komutu ise `push` komutunun tam tersini yapıp sunucudaki commitleri local reponuza çekmeye yarar ancak şuan tek geliştirici siz olduğunuz için localinizdeki repo ile remote repo aynı olacaktır. Dolayısıyla pull ettiğinizde size sunucudan hiçbir commit gelmeyecektir. `pull` komutunu başka developerların sizin reponuza gönderdiği commitleri localinize çekmeniz için kullanacağız. Detayları **Git ile ekip çalışması** başlığında göreceksiniz.
+
 Git ile ekip çalışması
 ----------------------
 ----------
+
+Bu noktaya kadar hep kendi kendimize oyunlar oynadık, eğlendik. Peki ama projenin tek geliştirici biz değilsek ne olacak? Diğer developer kardeşler nasıl commit yollayacak? Nasıl değişiklik yapacak? Bu değişiklikleri biz nasıl göreceğiz? İşte bu noktada **git** hayatımızı kurtarıyor. 
 
 Conflict / Merge kavramları
 ---------------------------
@@ -109,7 +131,7 @@ Detaylı Kaynaklar
 ----------
 
 
- 1. [http://git-scm.com/book/][8]
+ 1. [http://git-scm.com/book/][10]
 
 > Written with [StackEdit](https://stackedit.io/).
 
@@ -121,4 +143,6 @@ Detaylı Kaynaklar
   [5]: http://cl.ly/image/1f1k1r103v3C/Image%202014-08-13%20at%203.53.55%20%C3%96S.png
   [6]: http://cl.ly/image/2O3L1X2v3R3k/Image%202014-08-13%20at%203.57.53%20%C3%96S.png
   [7]: http://cl.ly/image/0r2m3O0D2y3c/Image%202014-08-13%20at%204.00.51%20%C3%96S.png
-  [8]: http://git-scm.com/book/
+  [8]: http://cl.ly/image/2V0J0i0c1r21/Image%202014-08-13%20at%204.22.00%20%C3%96S.png
+  [9]: http://cl.ly/image/1V3t0H3t1T3U/Image%202014-08-13%20at%204.27.09%20%C3%96S.png
+  [10]: http://git-scm.com/book/
