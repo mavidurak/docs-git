@@ -145,20 +145,59 @@ Ben "eklemeler yapıldı" şeklinde bir commit yapmışım, tam sunucuya gönder
 
 Özgür deneme.cpp adında yeni bir dosya oluşturmuş (new file mode), `ls` komutu çalıştırınca bu dosyanın da bana geldiğini görebilirsiniz.
 
-Bu şekilde yüzlerce, binlerce developer birlikte çalışabilirsiniz. Siz uygulamanın bir modülü üzerinde çalışırken, bir başkası farklı bir modülü üzerinde çalışabilir ve kolayca diğer developerların değişikliklerini kendi bilgisayarınıza alabilirsiniz.
+Bu şekilde yüzlerce, binlerce developer birlikte çalışabilirsiniz. Siz uygulamanın bir modülü üzerinde çalışırken, bir başkası farklı bir modülü üzerinde çalışabilir ve kolayca diğer developerların değişikliklerini kendi bilgisayarınıza alabilirsiniz. Bu durumda sunucuda her zaman projenin en güncel hali bulunmuş oluyor. Ancak diğer developerlar sizinle aynı dosya üzerinde çalışıyorsa ne olacak? Sizin eklediğiniz bir satırı bir başkası silerse ne olacak? Hanginizinki kullanılacak? Bu soruları bir sonraki başlıkta cevaplayacağım. 
 
 Conflict / Merge kavramları
 ---------------------------
 ----------
+
+Ekip çalışması başlığında farklı dosyalar üzerinde nasıl çalışabileceğinizi anlatmıştım. Ancak diğer developerlar sizinle aynı dosya üzerinde çalışıyorsa ne olacak? Sizin eklediğiniz bir satırı bir başkası silerse ne olacak? Hanginizinki kullanılacak? Bu soruları bu başlıkta cevaplayacağım. 
+
+Diyelim ki main.cpp dosyasının 1. satırında bazı değişiklikler yapıp bu değişiklikleri commit ettim. Aynı anda da Özgür aynı dosyanın 2. satırını değiştirdi commit edip benden önce sunucuya push etti. Ama benim bundan haberim yok tabi ki. Ben kendi commitimi push etmek istediğimde ne olacak görelim :
+
+![enter image description here][14]
+
+Daha önce de bu hatayı görmüştük, birisinin bizden önce sunucuya push ettiğini gösteriyor. Biz de `git pull` deyip önce o değişiklikleri çekmeye çalışalım.
+
+![enter image description here][15]
+
+Evet bu sefer pull ettiğimizde Özgür'ün değişiklikleriyle benim değişikliklerimi birleştiremedi (merge) . Çünkü aynı dosyada değişiklik yaptık ve farklı commitlerle aynı dosyanın farklı hallerinin doğru olduğunu iddia ettik. **git** de bize diyor ki, "ee şimdi ben hangisini kullanayım? Çakışma (conflict) var, bunu çöz, öyle commit et!" . Hemen main.cpp dosyamıza bakıyoruz.
+
+(dosyanın değişiklikler yapılmadan ve ben son commitimi yapmadan önceki hali)
+
+    asdasd
+    eklemeler
+
+(dosyanın pull denemesi yaptıktan sonraki hali)
+
+    <<<<<<< HEAD
+    eray değiştirdi
+    eklemeler
+    =======
+    asdasd
+    özgür değiştirdi
+    >>>>>>> 022380c1eae898dbd30e22bd02bd708e2609599a
+
+Burada **<<<<<< HEAD** ile **======** arasındaki kodlar benim yaptığım değişiklikler, **======** ile **>>>>> COMMIT ID** arasındaki kodlar ise Özgür'ün yaptığı değişiklikler. Ben 1. satıra **eray değiştirdi** yazmışım, Özgür ise 2. satıra **Özgür değiştirdi** yazmış. Şimdi benim burada Özgür ile de görüşüp, bu dosyanın son halini oluşturmam gerekiyor. Son halini şöyle düzenledim (<<<< ve >>>> gibi ifadeleri silerek)
+
+eray değiştirdi
+özgür değiştirdi
+
+şimdi tekrar `git status` diyelim bakalım.
+![enter image description here][16]
+
+Bize diyor ki, main.cpp dosyası merge edilmemiş, conflict'i çöz (zaten çözdük) ve sonra git add komutu ile bunu yeniden commit edilecekler listesine ekleyip commit edelim.
+
+![enter image description here][17]
+
+İşte bu kadar :) Conflict'i çözdük ve main.cpp'nin en doğru halini sunucuya push ettik. Özgür pull ettiği zaman dosyanın en güncel halini alacak.
 
 Detaylı Kaynaklar
 -----------------
 ----------
 
 
- 1. [http://git-scm.com/book/][14]
-
-> Written with [StackEdit](https://stackedit.io/).
+ 1. [http://git-scm.com/book/][18]
 
 
   [1]: http://cl.ly/image/1j1d0E0b273C/Image%202014-08-13%20at%203.39.05%20%C3%96S.png
@@ -174,4 +213,8 @@ Detaylı Kaynaklar
   [11]: http://i.imgur.com/fw3buIN.png
   [12]: http://i.imgur.com/JZlgbO1.png
   [13]: http://i.imgur.com/Qq0hes4.png
-  [14]: http://git-scm.com/book/
+  [14]: http://i.imgur.com/B7p67vM.png
+  [15]: http://i.imgur.com/eUDoWl8.png
+  [16]: http://i.imgur.com/6Gn6oHm.png
+  [17]: http://i.imgur.com/6rg1Yys.png
+  [18]: http://git-scm.com/book/
