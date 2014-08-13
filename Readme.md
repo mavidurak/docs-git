@@ -83,6 +83,14 @@ Gördüğünüz gibi, ilk commitimde main.cpp dosyası boştu ve ben daha sonra 
     git checkout 801a786096c84596ff13a1f86759cc99d4ef1607
 
 Artık main.cpp ilk committeki haline döndü. Tekrar en son committeki haline geri döndürmek için aynı komutu kullanabilir ya da kısaca `git checkout master` diyebilirsiniz. Aslında manası daha derin olsa da şimdilik `master`'ın son commitinizi ifade ettiğini söyleyebilirim.
+
+**Editör Notu **
+Burada bir hatam oldu ve daha anlaşılır olsun diye commit mesajlarında "ilk mesajım" gibi ifadeler kullandım. Normalde böyle anlaşılmaz mesajlar gönderdiğinizde çalışma arkadaşlarınızdan dayak yiyebilirsiniz. Çünkü bu mesajlar çok önemli. Mesajlarda her zaman o committe ne değişiklik yaptığınızı, hangi bug'ı düzelttiğiniz yazmalısınız ki yarın öbür gün "ben hangi committe şu hatayı düzeltmiştim yahu?!" diye debelenmeyin. Birkaç commit mesajı örneği vermek gerekirse :
+
+"Kullanıcıdan veri talep edilen fonksiyon yazıldı"
+"Artık scanf yerine cin kullanılıyor"
+"Kullanıcının sayı yerine harf girmesi engellendi"
+"15 nolu bug düzeltildi"
  
 Pull / Push kavramları farkları ve kullanım yerleri
 ---------------------------------------------------
@@ -102,6 +110,8 @@ Detaylı Kaynaklar
 
 
  1. [http://git-scm.com/book/][8]
+
+> Written with [StackEdit](https://stackedit.io/).
 
 
   [1]: http://cl.ly/image/1j1d0E0b273C/Image%202014-08-13%20at%203.39.05%20%C3%96S.png
