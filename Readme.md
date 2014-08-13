@@ -122,6 +122,31 @@ Git ile ekip çalışması
 
 Bu noktaya kadar hep kendi kendimize oyunlar oynadık, eğlendik. Peki ama projenin tek geliştirici biz değilsek ne olacak? Diğer developer kardeşler nasıl commit yollayacak? Nasıl değişiklik yapacak? Bu değişiklikleri biz nasıl göreceğiz? İşte bu noktada **git** hayatımızı kurtarıyor. 
 
+Remote sunucumuz diğer developerlar ile aramızdaki köprü olacak. Biz değişiklik yapıp commit edip sunucuya yollayacağız, diğer developerlar pull edip o değişiklikleri sunucudan alacaklar, sonra onlar commit yollayacak biz pull edip o değişiklikleri sunucudan alacağız. Ne kadar kolay değil mi? Değil. ( conflict <3 )
+
+Diyelim ki bir diğer developer bazı değişiklikler yapıp sunucuya commit push etti. Ama bizim henüz bundan haberimiz yok. Biz efendi efendi kendi localimizde çalışıyor, değişiklikler yapıyoruz. Commitlerimizi yaptık, sunucuya push edeceğiz, ama o da ne?!
+![enter image description here][10]
+
+Push talebimiz reddedilmiş, çünkü bir başkası bizden önce sunucuya birşeyler push etmiş. **git** de bize diyor ki, "bak başkaları birşeyler gönderdi, önce onları bilgisayarına al, bir bak bakalım, daha sonra sen kendi commitlerini push edersin".
+
+Biz de `git pull origin master` diyerek sunucudaki commitleri localimize pull ediyoruz (çekiyoruz) . Bu commiti çalıştırınca şöyle bir ekran gelecek : 
+
+![enter image description here][11]
+
+Burada olanları size şöyle anlatayım, diğer developerın yaptığı değişiklikler ile sizinkiler birleştiriliyor, yani **merge** ediliyor ve bu merge işlemi için bir mesaj (aynı commit mesajı gibi) girmeniz isteniyor. Otomatik olarak gelen mesajı kabul edebilirsiniz, nano adlı editör kullanıldığı için sırasıyla şu tuşlara basabilirsiniz : **ESC , :wq, ENTER**
+
+Artık diğer developer'ın yaptığı değişiklikler de sizin localinizde, şimdi push dediğinizde kendi değişikliklerinizi de sunucuya gönderebilirsiniz. `git log`komutunu çalıştırınca neler olduğunu daha iyi anlayacaksınız (aşağıdan yukarıya doğru okuyun) :
+
+![enter image description here][12]
+
+Ben "eklemeler yapıldı" şeklinde bir commit yapmışım, tam sunucuya gönderecekken Özgür benden önce bir commit (deneme dosyası eklendi) push etmiş. Dolayısıyla ben önce Özgür'ün commitini localime aldım, merge ettim, daha sonra kendi commit'imi sunucuya gönderdim. Böylece ikimizin de yaptığı değişiklikler sunucuya gönderilmiş oldu. Özgür ne değişiklik yapmış bir bakalım :
+
+![enter image description here][13]
+
+Özgür deneme.cpp adında yeni bir dosya oluşturmuş (new file mode), `ls` komutu çalıştırınca bu dosyanın da bana geldiğini görebilirsiniz.
+
+Bu şekilde yüzlerce, binlerce developer birlikte çalışabilirsiniz. Siz uygulamanın bir modülü üzerinde çalışırken, bir başkası farklı bir modülü üzerinde çalışabilir ve kolayca diğer developerların değişikliklerini kendi bilgisayarınıza alabilirsiniz.
+
 Conflict / Merge kavramları
 ---------------------------
 ----------
@@ -131,7 +156,7 @@ Detaylı Kaynaklar
 ----------
 
 
- 1. [http://git-scm.com/book/][10]
+ 1. [http://git-scm.com/book/][14]
 
 > Written with [StackEdit](https://stackedit.io/).
 
@@ -145,4 +170,8 @@ Detaylı Kaynaklar
   [7]: http://cl.ly/image/0r2m3O0D2y3c/Image%202014-08-13%20at%204.00.51%20%C3%96S.png
   [8]: http://cl.ly/image/2V0J0i0c1r21/Image%202014-08-13%20at%204.22.00%20%C3%96S.png
   [9]: http://cl.ly/image/1V3t0H3t1T3U/Image%202014-08-13%20at%204.27.09%20%C3%96S.png
-  [10]: http://git-scm.com/book/
+  [10]: http://i.imgur.com/bbkQQxy.png
+  [11]: http://i.imgur.com/fw3buIN.png
+  [12]: http://i.imgur.com/JZlgbO1.png
+  [13]: http://i.imgur.com/Qq0hes4.png
+  [14]: http://git-scm.com/book/
