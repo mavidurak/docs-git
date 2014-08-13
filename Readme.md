@@ -180,8 +180,8 @@ Evet bu sefer pull ettiğimizde Özgür'ün değişiklikleriyle benim değişikl
 
 Burada **<<<<<< HEAD** ile **======** arasındaki kodlar benim yaptığım değişiklikler, **======** ile **>>>>> COMMIT ID** arasındaki kodlar ise Özgür'ün yaptığı değişiklikler. Ben 1. satıra **eray değiştirdi** yazmışım, Özgür ise 2. satıra **Özgür değiştirdi** yazmış. Şimdi benim burada Özgür ile de görüşüp, bu dosyanın son halini oluşturmam gerekiyor. Son halini şöyle düzenledim (<<<< ve >>>> gibi ifadeleri silerek)
 
-eray değiştirdi
-özgür değiştirdi
+    eray değiştirdi
+    özgür değiştirdi
 
 şimdi tekrar `git status` diyelim bakalım.
 ![enter image description here][16]
