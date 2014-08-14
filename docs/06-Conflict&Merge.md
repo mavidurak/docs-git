@@ -40,7 +40,8 @@ Burada **<<<<<< HEAD** ile **======** arasındaki kodlar benim yaptığım deği
     özgür değiştirdi
 ```
 
-şimdi tekrar `git status` diyelim bakalım.
+Şimdi tekrar `git status` diyelim bakalım.
+
 ![enter image description here][16]
 
 Bize diyor ki, main.cpp dosyası merge edilmemiş, conflict'i çöz (zaten çözdük) ve sonra git add komutu ile bunu yeniden commit edilecekler listesine ekleyip commit edelim.

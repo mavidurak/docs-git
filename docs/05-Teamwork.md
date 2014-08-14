@@ -7,6 +7,7 @@ Bu noktaya kadar hep kendi kendimize oyunlar oynadık, eğlendik. Peki ama proje
 Remote sunucumuz diğer developerlar ile aramızdaki köprü olacak. Biz değişiklik yapıp commit edip sunucuya yollayacağız, diğer developerlar pull edip o değişiklikleri sunucudan alacaklar. Sonra onlar commit yollayacak, biz pull edip o değişiklikleri sunucudan alacağız. Ne kadar kolay değil mi? Değil. ( conflict <3 )
 
 Diyelim ki bir diğer developer bazı değişiklikler yapıp sunucuya commit, ardından push etti. Ama bizim henüz bundan haberimiz yok. Biz efendi efendi kendi localimizde çalışıyor, değişiklikler yapıyoruz. Commitlerimizi yaptık, sunucuya push edeceğiz, ama o da ne?!
+
 ![enter image description here][10]
 
 Push talebimiz reddedilmiş, çünkü bir başkası bizden önce sunucuya birşeyler push etmiş. **git** de bize diyor ki; "Bak başkaları birşeyler gönderdi, önce onları bilgisayarına al, bir bak bakalım, daha sonra sen kendi commitlerini push edersin".
